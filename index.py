@@ -45,3 +45,15 @@ def create_db(chunks):
         persist_directory=DB_PATH
     )
     vectordb.persist()
+
+if __name__ == "__main__":
+    # Idempotent rebuild
+    if os.path.exists(DB_PATH):
+        shutil.rmtree(DB_PATH)
+
+    docs = load_documents()
+    chunks = split_docs(docs)
+    chunks = enrich_metadata(chunks)
+    create_db(chunks)
+
+    print("Indexing complete!")
