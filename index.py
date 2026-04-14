@@ -47,7 +47,7 @@ def create_db(chunks):
     vectordb.persist()
 
 if __name__ == "__main__":
-    # Idempotent rebuild
+    
     if os.path.exists(DB_PATH):
         shutil.rmtree(DB_PATH)
 
