@@ -28,33 +28,8 @@ def split_docs(docs):
     )
     return splitter.split_documents(docs)
 
-
 def enrich_metadata(chunks):
     for c in chunks:
         c.metadata["page"] = c.metadata.get("page", 0)
         c.metadata["category"] = c.metadata["source"].split("_")[0]
     return chunks
-
-
-def create_db(chunks):
-    embedding = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
-    )
-
-    vectordb = Chroma.from_documents(
-        documents=chunks,
-        embedding=embedding,
-        persist_directory=DB_PATH
-    )
-    vectordb.persist()
-
-if __name__ == "__main__":
-    if os.path.exists(DB_PATH):
-        shutil.rmtree(DB_PATH)
-
-    docs = load_documents()
-    chunks = split_docs(docs)
-    chunks = enrich_metadata(chunks)
-    create_db(chunks)
-
-    print("Indexing complete!")
