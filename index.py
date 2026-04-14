@@ -33,3 +33,15 @@ def enrich_metadata(chunks):
         c.metadata["page"] = c.metadata.get("page", 0)
         c.metadata["category"] = c.metadata["source"].split("_")[0]
     return chunks
+
+def create_db(chunks):
+    embedding = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
+
+    vectordb = Chroma.from_documents(
+        documents=chunks,
+        embedding=embedding,
+        persist_directory=DB_PATH
+    )
+    vectordb.persist()
