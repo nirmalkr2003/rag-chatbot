@@ -1,10 +1,14 @@
 from fastapi import FastAPI
+from collections import defaultdict
+
 from langchain_openai import AzureChatOpenAI
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
+
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
+
 
 
 llm = AzureChatOpenAI(
@@ -14,7 +18,6 @@ llm = AzureChatOpenAI(
     api_version="2025-01-01-preview",
     temperature=0
 )
-
 
 embedding = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
@@ -30,12 +33,14 @@ retriever = vectordb.as_retriever(
     search_kwargs={"k": 3}
 )
 
-
 prompt = ChatPromptTemplate.from_template("""
 You are a Gapblue policy assistant.
 
 Answer ONLY from the provided context.
 If the answer is not found, say "I don't know".
+
+Chat History:
+{history}
 
 Context:
 {context}
@@ -46,29 +51,56 @@ Question:
 Answer:
 """)
 
+
 def format_docs(docs):
     return "\n\n".join(d.page_content for d in docs)
 
-rag_chain = (
-    {
-        "context": retriever | format_docs,
-        "question": RunnablePassthrough()
-    }
-    | prompt
-    | llm
-    | StrOutputParser()
-)
+chat_memory = {}
+
+def get_history(conversation_id):
+    return chat_memory.get(conversation_id, [])
+
+def update_history(conversation_id, question, answer):
+    if conversation_id not in chat_memory:
+        chat_memory[conversation_id] = []
+    chat_memory[conversation_id].append((question, answer))
+
+
 
 app = FastAPI()
 
-chat_memory = {}
 
 @app.post("/chat")
 def chat(query: str, conversation_id: str = "default"):
+    
+    
     docs = retriever.get_relevant_documents(query)
 
+   
+    history_list = get_history(conversation_id)
+    history_text = "\n".join(
+        [f"Q: {q}\nA: {a}" for q, a in history_list]
+    )
+
+    
+    rag_chain = (
+        {
+            "context": retriever | format_docs,
+            "question": RunnablePassthrough(),
+            "history": lambda x: history_text
+        }
+        | prompt
+        | llm
+        | StrOutputParser()
+    )
+
+   
     answer = rag_chain.invoke(query)
 
+    
+    update_history(conversation_id, query, answer)
+
+    
     sources = [
         {
             "document": d.metadata["source"],
@@ -77,6 +109,7 @@ def chat(query: str, conversation_id: str = "default"):
         }
         for d in docs
     ]
+
 
     confidence = "high" if len(docs) >= 2 else "low"
 
@@ -89,6 +122,12 @@ def chat(query: str, conversation_id: str = "default"):
 
 @app.get("/sources")
 def sources():
-    return {
-        "total_chunks": vectordb._collection.count()
-    }
+    all_data = vectordb.get()
+
+    counts = defaultdict(int)
+
+    for meta in all_data["metadatas"]:
+        doc_name = meta["source"]
+        counts[doc_name] += 1
+
+    return dict(counts)
