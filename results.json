@@ -1,0 +1,400 @@
+{
+    "summary": {
+        "accuracy": 0.6,
+        "hallucination_rate": 0.25,
+        "avg_sources_per_answer": 2.0,
+        "source_coverage": 1.0
+    },
+    "single_turn_results": [
+        {
+            "question": "What are the core values mentioned in the code of conduct?",
+            "answer": "I don't know.",
+            "sources": [
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 0,
+                    "relevance_score": 0.647
+                },
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 38,
+                    "relevance_score": 0.895
+                }
+            ],
+            "expected": "C-LIFE"
+        },
+        {
+            "question": "What does integrity mean in the company context?",
+            "answer": "Integrity in the company context means acting honestly and uprightly in all dealings, keeping commitments, and addressing actions, conditions, or behaviors that contradict the company's values and culture.",
+            "sources": [
+                {
+                    "document": "Anti Curruption Policy.pdf",
+                    "page": 3,
+                    "relevance_score": 0.626
+                },
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 21,
+                    "relevance_score": 0.685
+                }
+            ],
+            "expected": "transparency"
+        },
+        {
+            "question": "What should employees do if they see a violation?",
+            "answer": "Employees should report any violation or potential violation in good faith without worrying about professional repercussions. If they are the subject of an external investigation, they should immediately report this as well.",
+            "sources": [
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 38,
+                    "relevance_score": 0.83
+                },
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 36,
+                    "relevance_score": 1.024
+                }
+            ],
+            "expected": "report"
+        },
+        {
+            "question": "Who can employees contact for ethical concerns?",
+            "answer": "Employees can contact any of the resources listed at the end of the Code for ethical concerns.",
+            "sources": [
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 7,
+                    "relevance_score": 0.83
+                },
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 19,
+                    "relevance_score": 0.838
+                }
+            ],
+            "expected": "Office of Integrity"
+        },
+        {
+            "question": "What is the purpose of the travel policy?",
+            "answer": "The purpose of the travel policy is to ensure employees follow the guidelines and rules when official travel is involved, applying to both domestic and international travel.",
+            "sources": [
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 0,
+                    "relevance_score": 0.596
+                },
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 0,
+                    "relevance_score": 0.756
+                }
+            ],
+            "expected": "guidelines"
+        },
+        {
+            "question": "Who approves travel arrangements?",
+            "answer": "I don't know.",
+            "sources": [
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 4,
+                    "relevance_score": 0.766
+                },
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 0,
+                    "relevance_score": 0.958
+                }
+            ],
+            "expected": "supervisor"
+        },
+        {
+            "question": "Are luxury accommodations allowed?",
+            "answer": "No, luxury accommodations are not allowed. Employees are expected to book company-approved hotels at reasonable rates and avoid luxury accommodations.",
+            "sources": [
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 2,
+                    "relevance_score": 1.006
+                },
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 2,
+                    "relevance_score": 1.016
+                }
+            ],
+            "expected": "avoid"
+        },
+        {
+            "question": "What must employees submit for reimbursement?",
+            "answer": "Employees must submit the completed Reimbursement Request Form along with the required bills. The form should include the employee's name, employee ID, and the number of events participated in.",
+            "sources": [
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 4,
+                    "relevance_score": 0.778
+                },
+                {
+                    "document": "Gapblue Financial Support Policy for Intercompany Fest.pdf",
+                    "page": 1,
+                    "relevance_score": 0.795
+                }
+            ],
+            "expected": "receipts"
+        },
+        {
+            "question": "What does POSH policy aim to prevent?",
+            "answer": "The POSH policy aims to prevent sexual harassment of women at the workplace.",
+            "sources": [
+                {
+                    "document": "POSH Policy -Gapblue.pdf",
+                    "page": 0,
+                    "relevance_score": 0.721
+                },
+                {
+                    "document": "Anti Curruption Policy.pdf",
+                    "page": 0,
+                    "relevance_score": 1.26
+                }
+            ],
+            "expected": "sexual harassment"
+        },
+        {
+            "question": "Within how many months should a complaint be filed?",
+            "answer": "A complaint should be filed within 3 months from the date of the incident, and in the case of a series of incidents, within 3 months from the date of the last incident.",
+            "sources": [
+                {
+                    "document": "POSH Policy -Gapblue.pdf",
+                    "page": 3,
+                    "relevance_score": 0.812
+                },
+                {
+                    "document": "POSH Policy -Gapblue.pdf",
+                    "page": 4,
+                    "relevance_score": 0.96
+                }
+            ],
+            "expected": "3 months"
+        },
+        {
+            "question": "What committee handles harassment complaints?",
+            "answer": "The Internal Complaints Committee (ICC) handles harassment complaints.",
+            "sources": [
+                {
+                    "document": "POSH Policy -Gapblue.pdf",
+                    "page": 1,
+                    "relevance_score": 0.613
+                },
+                {
+                    "document": "POSH Policy -Gapblue.pdf",
+                    "page": 3,
+                    "relevance_score": 0.79
+                }
+            ],
+            "expected": "ICC"
+        },
+        {
+            "question": "What is the maximum time for inquiry completion?",
+            "answer": "The maximum time for inquiry completion is 90 days.",
+            "sources": [
+                {
+                    "document": "POSH Policy -Gapblue.pdf",
+                    "page": 4,
+                    "relevance_score": 1.019
+                },
+                {
+                    "document": "POSH Policy -Gapblue.pdf",
+                    "page": 4,
+                    "relevance_score": 1.131
+                }
+            ],
+            "expected": "90 days"
+        },
+        {
+            "question": "How much reimbursement is provided per head for one event?",
+            "answer": "I don't know.",
+            "sources": [
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 4,
+                    "relevance_score": 0.998
+                },
+                {
+                    "document": "Gapblue Financial Support Policy for Intercompany Fest.pdf",
+                    "page": 1,
+                    "relevance_score": 1.078
+                }
+            ],
+            "expected": "1500"
+        },
+        {
+            "question": "What expenses are covered under this policy?",
+            "answer": "I don't know.",
+            "sources": [
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 4,
+                    "relevance_score": 0.746
+                },
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 5,
+                    "relevance_score": 0.819
+                }
+            ],
+            "expected": "costume"
+        },
+        {
+            "question": "What must employees submit for reimbursement?",
+            "answer": "Employees must submit the completed Reimbursement Request Form along with the required bills. The form should include the employee's name, employee ID, and the number of events participated in.",
+            "sources": [
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 4,
+                    "relevance_score": 0.778
+                },
+                {
+                    "document": "Gapblue Financial Support Policy for Intercompany Fest.pdf",
+                    "page": 1,
+                    "relevance_score": 0.795
+                }
+            ],
+            "expected": "bills"
+        },
+        {
+            "question": "Who verifies reimbursement claims?",
+            "answer": "I don't know.",
+            "sources": [
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 16,
+                    "relevance_score": 0.935
+                },
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 4,
+                    "relevance_score": 0.961
+                }
+            ],
+            "expected": "Finance"
+        },
+        {
+            "question": "What is considered a bribe?",
+            "answer": "A bribe is anything of value that may be seen as an attempt to influence an action or a decision in order to obtain or retain business or acquire an improper advantage. This could include money, gifts, favors, use of company resources, entertainment, or other items of value.",
+            "sources": [
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 12,
+                    "relevance_score": 0.477
+                },
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 12,
+                    "relevance_score": 0.709
+                }
+            ],
+            "expected": "anything of value"
+        },
+        {
+            "question": "Is sharing confidential information allowed?",
+            "answer": "No, sharing confidential information is not allowed unless the company has provided specific consent, preferably in writing, or there is a legal or professional right or duty to disclose.",
+            "sources": [
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 24,
+                    "relevance_score": 0.667
+                },
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 24,
+                    "relevance_score": 0.692
+                }
+            ],
+            "expected": "not"
+        },
+        {
+            "question": "What is insider trading?",
+            "answer": "Insider trading refers to the act of trading in the shares of a company based on \"material\" non-public information, such as management changes or upcoming acquisitions, which is not available to the public. It is unlawful under applicable securities laws and may lead to penalties such as imprisonment, fines, or private lawsuits.",
+            "sources": [
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 16,
+                    "relevance_score": 0.453
+                },
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 16,
+                    "relevance_score": 0.789
+                }
+            ],
+            "expected": "non-public"
+        },
+        {
+            "question": "Can employees engage in conflicts of interest?",
+            "answer": "No, employees must avoid situations involving actual or potential conflicts of interest to ensure their integrity is not questioned and to prevent any impact on their judgment or responsibilities towards the company, shareholders, and customers.",
+            "sources": [
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 18,
+                    "relevance_score": 0.54
+                },
+                {
+                    "document": "code_of_conduct (1).pdf",
+                    "page": 18,
+                    "relevance_score": 0.631
+                }
+            ],
+            "expected": "avoid"
+        }
+    ],
+    "multi_turn_results": [
+        {
+            "question": "What is leave policy?",
+            "answer": "I don't know.",
+            "sources": [
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 0,
+                    "relevance_score": 0.956
+                },
+                {
+                    "document": "POSH Policy -Gapblue.pdf",
+                    "page": 5,
+                    "relevance_score": 1.002
+                }
+            ]
+        },
+        {
+            "question": "How many sick leaves?",
+            "answer": "I don't know.",
+            "sources": [
+                {
+                    "document": "Anti Curruption Policy.pdf",
+                    "page": 13,
+                    "relevance_score": 1.564
+                },
+                {
+                    "document": "Anti Curruption Policy.pdf",
+                    "page": 1,
+                    "relevance_score": 1.626
+                }
+            ]
+        },
+        {
+            "question": "Can unused leaves be carried forward?",
+            "answer": "I don't know.",
+            "sources": [
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 5,
+                    "relevance_score": 1.505
+                },
+                {
+                    "document": "travel_policy (1).pdf",
+                    "page": 1,
+                    "relevance_score": 1.512
+                }
+            ]
+        }
+    ]
+}
