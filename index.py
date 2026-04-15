@@ -4,6 +4,18 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
+import re
+
+def clean_text(text):
+    
+    text = re.sub(r'\b(?:[A-Za-z]\s){2,}[A-Za-z]\b',
+                  lambda m: m.group(0).replace(" ", ""),
+                  text)
+
+   
+    text = re.sub(r'\s+', ' ', text)
+
+    return text.strip()
 
 DATA_PATH = "data/"
 DB_PATH = "db/"
@@ -15,16 +27,22 @@ def load_documents():
         if file.endswith(".pdf"):
             loader = PyPDFLoader(os.path.join(DATA_PATH, file))
             pages = loader.load()
+
             for p in pages:
                 p.metadata["source"] = file
+
+               
+                p.page_content = clean_text(p.page_content)
+
             docs.extend(pages)
+
     return docs
 
 
 def split_docs(docs):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=100
+        chunk_size=1000,
+        chunk_overlap=200
     )
     return splitter.split_documents(docs)
 
